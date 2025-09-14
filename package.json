@@ -5,7 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "migration:up": "node utils/runMigrations.js",
+    "migration:down": "node utils/undoMigrations.js"
   },
   "author": "Michael Ikoko",
   "license": "ISC",
@@ -15,9 +17,11 @@
     "express": "^4.21.2",
     "express-async-errors": "^3.1.1",
     "pg": "^8.16.0",
-    "sequelize": "^6.37.7"
+    "sequelize": "^6.37.7",
+    "umzug": "^3.8.2"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "sequelize-cli": "^6.6.3"
   }
 }

@@ -16,12 +16,16 @@ Task.init({
     completed: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
+    },
+    dueDate: {
+        type: DataTypes.DATE,
+        allowNull: true
     }
 }, {
     sequelize,
     modelName: "Task",
     timestamps: true,
-    underscored: true,
+    underscored: false,
     defaultScope: {
         attributes: {
             exclude: ["createdAt", "updatedAt"]
@@ -29,6 +33,6 @@ Task.init({
     }
 })
 
-Task.sync()
+//Task.sync()
 
 module.exports = Task

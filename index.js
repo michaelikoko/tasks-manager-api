@@ -18,8 +18,18 @@ app.get("/api/tasks", async (req, res) => {
 });
 
 app.post("/api/tasks", async (req, res) => {
-  const { title } = req.body;
-  const task = await Task.create({ title });
+  const { title, dueDate } = req.body;
+  if (!title) {
+    return res.status(400).json({ message: "Title is required" });
+  }
+  const dueDateObj = dueDate ? new Date(dueDate) : null;
+  if (dueDateObj == "Invalid Date") {
+    return res.status(400).json({ message: "Invalid due date format" });
+  }
+  if (dueDateObj && dueDateObj < new Date()) {
+    return res.status(400).json({ message: "Due date cannot be in the past" });
+  }
+  const task = await Task.create({ title, dueDate: dueDateObj });
   res.status(201).json({
     message: "Task created successfully",
     task,
