@@ -33,6 +33,4 @@ Task.init({
     }
 })
 
-//Task.sync()
-
 module.exports = Task
