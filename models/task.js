@@ -21,7 +21,7 @@ Task.init({
     sequelize,
     modelName: "Task",
     timestamps: true,
-    underscored: true,
+    underscored: false,
     defaultScope: {
         attributes: {
             exclude: ["createdAt", "updatedAt"]
